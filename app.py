@@ -5,12 +5,12 @@ import os
 from groq import Groq
 import re
 
-api_key=os.getenv("groq_deepseek")
+
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///todo.db'
 db=SQLAlchemy(app)
-# api_key = os.getenv("deepseek")  # Safely access your API key
+api_key = os.getenv("deepseek")  # Safely access your API key
 client = Groq(api_key=api_key)
 
 # Initialize conversation history with a system prompt
