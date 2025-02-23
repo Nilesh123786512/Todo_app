@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+
+
+{% block title %}
+Edit-Todo
+{% endblock title %}
+
+
+{% block body %}
+<div style="text-align: center;">
+    <h1>Edit the task</h1>
+  </div>
+
+
+  <hr>
+  <div class="container my-3">
+    <form action="/edit/{{todo.sno}}" method="POST">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Task</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" name="title"
+           value="{{ todo.title }}">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">{{todo.description}}</textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Edit the To-do</button>
+      </div>
+    </form>
+  </div>
+  <br>
+
+{% endblock body %}
