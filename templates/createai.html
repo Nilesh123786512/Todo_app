@@ -1,0 +1,37 @@
+{% extends 'base.html'%}
+{% block title %}
+Create with ai
+{% endblock title %}
+
+
+{% block body %}
+
+  <div style="text-align: center;">
+    <h1>Add a Task with AI</h1>
+  </div>
+
+
+  <hr>
+  <div class="container my-3">
+    <form action="/createai" method="POST">
+      
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Tell what to add with AI</label>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Create with ai</button>
+      </div>
+    </form>
+  </div>
+  <br>
+
+
+  <div class="alert alert-danger" role="alert">
+    Note:You are redirected to edit make changes if you want
+  </div>
+
+
+
+
+{% endblock body %}
