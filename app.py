@@ -17,7 +17,7 @@ client = Groq(api_key=api_key)
 conversation = [
     {"role": "system", "content": """You are an AI assistant helping to add To-do tasks.You are given a message you should return 
     <title>Title here</title> and <desc>Description here</desc>
-    make the title clearer and straight forward so that it gets me reminded easily
+    make the title clearer and straight forward so that it gets me reminded easily.Also ensure emojis so that it looks wonderful.
     """}
 ]
 
