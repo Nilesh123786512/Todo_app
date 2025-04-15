@@ -38,7 +38,7 @@ def create_with_ai():
         conv=conversation.copy()
         conv.append({"role": "user", "content": user_input})
         stream = client.chat.completions.create(
-            model="deepseek-r1-distill-qwen-32b",
+            model="deepseek-r1-distill-llama-70b",
             messages=conv,
             temperature=0.7,
             max_tokens=5000,
