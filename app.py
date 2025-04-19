@@ -2,11 +2,11 @@ from flask import Flask,render_template,request,redirect,session
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from groq import Groq
 import re
 
-load_dotenv()
+# load_dotenv()
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///todo.db'
