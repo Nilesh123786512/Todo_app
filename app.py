@@ -17,7 +17,12 @@ client = Groq(api_key=api_key)
 
 # Initialize conversation history with a system prompt
 conversation = [
-    {"role": "system", "content": """You are an AI assistant helping to add To-do tasks. You are given a message and should return multiple suggested to-do items. For each suggested to-do, return it in the format <todo><title>Title here</title><desc>Description here</desc></todo>. Make the titles clear and straightforward so they are easy to remember. Ensure emojis are included to make them look wonderful. Generate at least 3-5 suggestions if possible, based on the user's input."""}
+    {"role": "system", "content": """You are an AI assistant helping to add To-do tasks. You are given a message and should return multiple or single suggested to-do items based on context. For each suggested to-do, return it in the format <todo><title>Title here</title><desc>Description here</desc></todo>. Make the titles clear and straightforward so they are easy to remember. Ensure emojis are included to make them look wonderful. Cleverly make the todos.In description also give motivation for doing that todo.
+     
+     Example1:Need to do walking. (You should give one todo for walking)
+     Example2:Need to do tutorial 1 and tutorial 2. (You give seperately tutorial 1 and tutorial 2 todo's)
+
+     """}
 ]
 
 
@@ -46,6 +51,7 @@ def create_with_ai():
         ai_response = stream.choices[0].message.content
         print(ai_response)
         # Find all todo blocks
+        ai_response=re.sub(r'', '', ai_response, flags=re.DOTALL)
         todo_blocks = re.findall(r'<todo>(.*?)</todo>', ai_response, re.DOTALL)
         
         suggested_todos = []
@@ -127,7 +133,7 @@ def review_ai_todos():
         return render_template('reviewai.html', suggested_todos=suggested_todos)
 
 
-@app.route('/edit_existing/<int:sno>',methods=['POST','GET'])
+@app.route('/edit/<int:sno>',methods=['POST','GET'])
 def edit(sno):
     if request.method=='POST':
         title=request.form['title']
